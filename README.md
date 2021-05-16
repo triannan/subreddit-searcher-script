@@ -15,7 +15,7 @@ for submission in reddit.subreddit("appleswap").new(limit=100):
             reddit.redditor("USERNAME").message("ipad air 4", "here is an ipad air 4: " + submission.permalink)
             print(submission.title)
         if re.search("apple pencil 2, submission.title, re.IGNORECASE):
-            reddit.redditor("USERNAME").message("pencil 2", "here is apple pencil 2: " + submission.permalink)
+            reddit.redditor("USERNAME").message("apple pencil 2", "here is an apple pencil 2: " + submission.permalink)
             print(submission.title)
         posts_seen.append(submission.id)
 ```
