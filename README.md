@@ -26,16 +26,16 @@ In order to run this script to check the subreddit in certain intervals, cron or
 For example, if you want to run the subreddit script to check the subreddit every minute, you can configure your crontab to look like this. <br />
 ###### Example crontab running the reddit script every minute
 ```
-* * * * * ./pathtofile/subreddit-searcher.py >> /pathtofile/cron.log 2>&1
+* * * * * ./pathtofile/reddit-searcher.py >> /pathtofile/cron.log 2>&1
 ```
 It's a bit harder to run a cronjob for less than a minute, but you can always create a shell script to run your program, and sleep multiple times, and then run a cronjob for the new script. <br />
 For example, if you want to run the subreddit script every 30 seconds, you can create a shell script to run the subreddit searcher and rest 30 seconds before running it again. <br />
 ###### Example shell script running the reddit script 2 times in 30 second intervals
 ```
 #!/bin/bash
-python3 /pathtofile/subreddit-searcher.py
+python3 /pathtofile/reddit-searcher.py
 sleep 30
-python3 /pathtofile/subreddit-searcher.py
+python3 /pathtofile/reddit-searcher.py
 sleep 30
 ```
 If you create a cronjob for the example shell script above, running it every minute, it will run the subreddit script every 30 seconds repeatedly. <br />
