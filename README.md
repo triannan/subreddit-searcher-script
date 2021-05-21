@@ -11,10 +11,10 @@ For example, if you are looking for an iPad Pro 2020 and an Apple Pencil 2 on r/
 ```
 for submission in reddit.subreddit("appleswap").new(limit=100):
     if submission.id not in posts_seen:
-        if re.search("ipad pro 2020, submission.title, re.IGNORECASE):
+        if re.search("ipad pro 2020", submission.title, re.IGNORECASE):
             reddit.redditor("cooluser").message("ipad air 4", "here is an ipad air 4: " + submission.permalink)
             print(submission.title)
-        if re.search("apple pencil 2, submission.title, re.IGNORECASE):
+        if re.search("apple pencil 2", submission.title, re.IGNORECASE):
             reddit.redditor("cooluser").message("apple pencil 2", "here is an apple pencil 2: " + submission.permalink)
             print(submission.title)
         posts_seen.append(submission.id)
