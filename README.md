@@ -9,7 +9,7 @@ This script can be used for many purposes such as searching for specific items i
 #### Configuring the Script <br />
 For example, if you are looking for an iPad Pro 2020 and an Apple Pencil 2 on r/Appleswap, and the username you want the post sent to is "cooluser", you can configure the script to look like this.
 ```
-for submission in reddit.subreddit("appleswap").new(limit=100):
+for submission in reddit.subreddit("appleswap").new(limit=5):
     if submission.id not in posts_seen:
         if re.search("ipad pro 2020", submission.title, re.IGNORECASE):
             reddit.redditor("cooluser").message("ipad air 4", "here is an ipad air 4: " + submission.permalink)
@@ -18,28 +18,4 @@ for submission in reddit.subreddit("appleswap").new(limit=100):
             reddit.redditor("cooluser").message("apple pencil 2", "here is an apple pencil 2: " + submission.permalink)
             print(submission.title)
         posts_seen.append(submission.id)
-```
-<br />
-
-#### Running the Script <br />
-In order to run this script to check the subreddit in certain intervals, cron or something similar will be needed. <br />
-For example, if you want to run the subreddit script to check the subreddit every minute, you can configure your crontab to look like this. <br />
-###### Example crontab running the reddit script every minute
-```
-* * * * * ./pathtofile/reddit-searcher.py >> /pathtofile/cron.log 2>&1
-```
-It's a bit harder to run a cronjob for less than a minute, but you can always create a shell script to run your program, and sleep multiple times, and then run a cronjob for the new script. <br />
-For example, if you want to run the subreddit script every 30 seconds, you can create a shell script to run the subreddit searcher and rest 30 seconds before running it again. <br />
-###### Example shell script running the reddit script 2 times in 30 second intervals
-```
-#!/bin/bash
-python3 /pathtofile/reddit-searcher.py
-sleep 30
-python3 /pathtofile/reddit-searcher.py
-sleep 30
-```
-If you create a cronjob for the example shell script above, running it every minute, it will run the subreddit script every 30 seconds repeatedly. <br />
-###### Example crontab running the example shell script every minute
-```
-* * * * * ./pathtofile/example.sh >> /pathtofile/cron.log 2>&1
 ```
